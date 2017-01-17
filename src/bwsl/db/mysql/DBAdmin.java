@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class DBAdmin {
 	
 	private Connection con;
-	private PreparedStatement stat;
 	private StringBuilder url;
+	private PreparedStatement stat;
 	
 	public static final String _ENCODING_UTF_8 = "UTF-8";
 	public static final String _DRIVER_NAME = "com.mysql.jdbc.Driver";
