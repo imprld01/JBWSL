@@ -20,7 +20,8 @@ public class DBAdmin {
 		System.out.println("---------- MySQL JDBC Connection ----------");
 		System.out.println("Try Connecting Database...");
 		
-		this.prpareUrl(addr, dbName, unicode, encoding);	}
+		this.prpareUrl(addr, dbName, unicode, encoding);
+	}
 	
 	public DBAdmin(String addr, String dbName, boolean unicode, String encoding, String user, String pwd) throws ClassNotFoundException, SQLException {
 		
