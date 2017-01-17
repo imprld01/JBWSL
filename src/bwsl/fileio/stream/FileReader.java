@@ -9,6 +9,13 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
+/**
+ * 
+ * @author bowns
+ * @email bowns1688@hotmail.com
+ * @date 2017.01.17
+ *
+ */
 public class FileReader {
 	
 	private File targetFile;

@@ -6,6 +6,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
+/**
+ * 
+ * @author bowns
+ * @email bowns1688@hotmail.com
+ * @date 2017.01.17
+ *
+ */
 public class FileWriter {
 
 	private File targetFile;
