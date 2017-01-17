@@ -96,7 +96,7 @@ public class DBAdmin {
 		return rs;
 	}
 	
-	public void create(String table, ArrayList<String> columns) throws SQLException {
+	public void create(String table, ArrayList<CloumnParameter> columns) throws SQLException {
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append("CREATE TABLE " + table + " (");
@@ -109,7 +109,7 @@ public class DBAdmin {
 		stat = con.prepareStatement(sql.toString());
 		
 		for(int index = 1; index <= columns.size(); ++index)
-			stat.setString(index, columns.get(index));
+			stat.setString(index, columns.get(index).toString());
 		
 		stat.executeUpdate();
 		
