@@ -19,8 +19,8 @@ public class DBAdminTest {
 		dba.create("todrop", paras);
 		
 		ArrayList<String> values = new ArrayList<String>();
-		values.add("INSERT");
-		values.add("GOOD");
+		values.add("3");
+		values.add("5");
 		dba.insert("todrop", values);
 		
 		rs = dba.selectAll("todrop");
