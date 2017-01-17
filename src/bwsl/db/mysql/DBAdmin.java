@@ -102,15 +102,11 @@ public class DBAdmin {
 		sql.append("CREATE TABLE " + table + " (");
 		for(int index = 0; index < columns.size(); ++index) {
 			if(index > 0) sql.append(", ");
-			sql.append("?");
+			sql.append(columns.get(index).toString());
 		}
 		sql.append(")");
 		
 		stat = con.prepareStatement(sql.toString());
-		
-		for(int index = 0; index < columns.size(); ++index)
-			stat.setString(index + 1, columns.get(index).toString());
-		
 		stat.executeUpdate();
 	}
 
