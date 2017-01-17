@@ -15,29 +15,54 @@ public class DBAdmin {
 	
 	public static final String _ENCODING_UTF_8 = "UTF-8";
 	
+	public static final String _DRIVER_NAME = "com.mysql.jdbc.Driver";
+	
 	public DBAdmin(String addr, String dbName) throws ClassNotFoundException, SQLException {
 		
-		System.out.println("---------- MySQL JDBC Connection ----------");
-		System.out.println("Try Connecting Database...");
-		
+		this.printFrontConnectMsg();
 		this.prpareUrl(addr, dbName, true, DBAdmin._ENCODING_UTF_8);
 	}
 	
 	public DBAdmin(String addr, String dbName, String encoding) throws ClassNotFoundException, SQLException {
 		
-		System.out.println("---------- MySQL JDBC Connection ----------");
-		System.out.println("Try Connecting Database...");
-		
+		this.printFrontConnectMsg();
 		this.prpareUrl(addr, dbName, true, encoding);
 	}
 	
 	public DBAdmin(String addr, String dbName, String encoding, String user, String pwd) throws ClassNotFoundException, SQLException {
 		
-		System.out.println("---------- MySQL JDBC Connection ----------");
-		System.out.println("Try Connecting Database...");
-		
+		this.printFrontConnectMsg();
 		this.prpareUrl(addr, dbName, true, encoding);
 		this.connect(user, pwd);
+	}
+	
+	private void printFrontConnectMsg() {
+		
+		System.out.println("---------- MySQL JDBC Connection ----------");
+		System.out.println("Try Connecting Database...");
+	}
+	
+	private void printBackConnectMsg() {
+		
+		System.out.println("SQL Connection to Database Established!");
+		System.out.println("-------------------------------------------");
+	}
+	
+	private void printFrontCloseMsg() {
+		
+		System.out.println("---------- MySQL JDBC Connection ----------");
+		System.out.println("Try Closing SQL Connection to Database...");
+	}
+	
+	private void printBackCloseMsg() {
+		
+		System.out.println("SQL Connection to Database Closed!");
+		System.out.println("-------------------------------------------");
+	}
+	
+	private void printDriverRegMsg() {
+		
+		System.out.println("MySQL JDBC Driver Registered!");
 	}
 	
 	private void prpareUrl(String addr, String dbName, boolean unicode, String encoding) {
@@ -55,11 +80,10 @@ public class DBAdmin {
 	
 	public void connect(String user, String pwd) throws SQLException, ClassNotFoundException {
 		
-		Class.forName("com.mysql.jdbc.Driver");
-		System.out.println("MySQL JDBC Driver Registered!");
+		Class.forName(DBAdmin._DRIVER_NAME);
+		this.printDriverRegMsg();
 		this.con = DriverManager.getConnection(this.url.toString(), user, pwd);
-		System.out.println("SQL Connection to Database Established!");
-		System.out.println("-------------------------------------------");
+		this.printBackConnectMsg();
 	}
 	
 	public ResultSet execute(String sql) throws SQLException {
@@ -128,8 +152,7 @@ public class DBAdmin {
 	
 	public void close() throws SQLException {
 		
-		System.out.println("---------- MySQL JDBC Connection ----------");
-		System.out.println("Try Closing SQL Connection to Database...");
+		this.printFrontCloseMsg();
 		
 		if(this.stat != null) {
 			this.stat.close();
@@ -141,7 +164,6 @@ public class DBAdmin {
 			this.con = null;
 		}
 		
-		System.out.println("SQL Connection to Database Closed!");
-		System.out.println("-------------------------------------------");
+		this.printBackCloseMsg();
 	}
 }
