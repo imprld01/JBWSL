@@ -52,7 +52,7 @@ public class DBAdmin {
 	
 	private void printFrontCloseMsg() {
 		
-		System.out.println("---------- MySQL JDBC Connection ----------");
+		System.out.println("---------- MySQL JDBC Disconnection ----------");
 		System.out.println("Try Closing SQL Connection to Database...");
 	}
 	
