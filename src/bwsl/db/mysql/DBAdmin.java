@@ -20,16 +20,7 @@ public class DBAdmin {
 		System.out.println("---------- MySQL JDBC Connection ----------");
 		System.out.println("Try Connecting Database...");
 		
-		this.url = new StringBuilder();
-		this.url.append("jdbc:mysql://");
-		this.url.append(addr);
-		this.url.append("/");
-		this.url.append(dbName);
-		this.url.append("?useUnicode=");
-		this.url.append(unicode);
-		this.url.append("&characterEncoding=");
-		this.url.append(encoding);
-		
+		this.prpareUrl(addr, dbName, unicode, encoding);
 		this.connect(user, pwd);
 		
 		System.out.println("Connecting Database Succeed!");
