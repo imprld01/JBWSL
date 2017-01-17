@@ -14,6 +14,9 @@ public class DBAdmin {
 	private PreparedStatement stat;
 	
 	public static final String _ENCODING_UTF_8 = "UTF-8";
+	
+	public static final String _ADDR_LOCALHOST = "localhost";
+	public static final String _ADDR_LOCALHOST_PORT_3306 = "localhost:3306";
 	public static final String _DRIVER_NAME = "com.mysql.jdbc.Driver";
 	
 	public DBAdmin(String addr, String dbName) throws ClassNotFoundException, SQLException {
