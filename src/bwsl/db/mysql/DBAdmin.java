@@ -23,12 +23,12 @@ public class DBAdmin {
 		this.prpareUrl(addr, dbName, true, DBAdmin._ENCODING_UTF_8);
 	}
 	
-	public DBAdmin(String addr, String dbName, boolean unicode) throws ClassNotFoundException, SQLException {
+	public DBAdmin(String addr, String dbName, String encoding) throws ClassNotFoundException, SQLException {
 		
 		System.out.println("---------- MySQL JDBC Connection ----------");
 		System.out.println("Try Connecting Database...");
 		
-		this.prpareUrl(addr, dbName, unicode, DBAdmin._ENCODING_UTF_8);
+		this.prpareUrl(addr, dbName, true, encoding);
 	}
 	
 	public DBAdmin(String addr, String dbName, boolean unicode, String encoding) throws ClassNotFoundException, SQLException {
