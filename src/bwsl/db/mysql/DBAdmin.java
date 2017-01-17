@@ -15,6 +15,14 @@ public class DBAdmin {
 	
 	public static final String _ENCODING_UTF_8 = "UTF-8";
 	
+	public DBAdmin(String addr, String dbName, boolean unicode) throws ClassNotFoundException, SQLException {
+		
+		System.out.println("---------- MySQL JDBC Connection ----------");
+		System.out.println("Try Connecting Database...");
+		
+		this.prpareUrl(addr, dbName, unicode, DBAdmin._ENCODING_UTF_8);
+	}
+	
 	public DBAdmin(String addr, String dbName, boolean unicode, String encoding) throws ClassNotFoundException, SQLException {
 		
 		System.out.println("---------- MySQL JDBC Connection ----------");
