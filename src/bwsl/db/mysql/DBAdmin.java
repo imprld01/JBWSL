@@ -14,7 +14,6 @@ public class DBAdmin {
 	private StringBuilder url;
 	
 	public static final String _ENCODING_UTF_8 = "UTF-8";
-	
 	public static final String _DRIVER_NAME = "com.mysql.jdbc.Driver";
 	
 	public DBAdmin(String addr, String dbName) throws ClassNotFoundException, SQLException {
