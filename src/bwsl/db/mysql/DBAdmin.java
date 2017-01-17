@@ -36,6 +36,19 @@ public class DBAdmin {
 		System.out.println("-------------------------------------------");
 	}
 	
+	private void prpareUrl(String addr, String dbName, boolean unicode, String encoding) {
+		
+		this.url = new StringBuilder();
+		this.url.append("jdbc:mysql://");
+		this.url.append(addr);
+		this.url.append("/");
+		this.url.append(dbName);
+		this.url.append("?useUnicode=");
+		this.url.append(unicode);
+		this.url.append("&characterEncoding=");
+		this.url.append(encoding);
+	}
+	
 	public void connect(String user, String pwd) throws SQLException, ClassNotFoundException {
 		
 		Class.forName("com.mysql.jdbc.Driver");
