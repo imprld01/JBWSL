@@ -29,9 +29,6 @@ public class DBAdmin {
 		
 		this.prpareUrl(addr, dbName, unicode, encoding);
 		this.connect(user, pwd);
-		
-		System.out.println("Connecting Database Succeed!");
-		System.out.println("-------------------------------------------");
 	}
 	
 	private void prpareUrl(String addr, String dbName, boolean unicode, String encoding) {
@@ -53,6 +50,7 @@ public class DBAdmin {
 		System.out.println("MySQL JDBC Driver Registered!");
 		this.con = DriverManager.getConnection(this.url.toString(), user, pwd);
 		System.out.println("SQL Connection to Database Established!");
+		System.out.println("-------------------------------------------");
 	}
 	
 	public ResultSet execute(String sql) throws SQLException {
