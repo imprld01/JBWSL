@@ -9,11 +9,15 @@ import java.util.ArrayList;
 
 public class DBAdmin {
 	
-	private Connection con = null;
-	private Statement stat = null;
+	private Connection con;
+	private Statement stat;
+	private StringBuilder url;
+	
+	public static final String _ENCODING_UTF_8 = "UTF-8";
 	
 	public DBAdmin(String addr, String dbName, boolean unicode, String encoding, String user, String pwd) throws ClassNotFoundException, SQLException {
 		
+		System.out.println("---------- MySQL JDBC Connection ----------");
 		System.out.println("Try Connecting Database...");
 		StringBuilder url = new StringBuilder();
 		url.append("jdbc:mysql://");
@@ -25,9 +29,17 @@ public class DBAdmin {
 		url.append("&characterEncoding=");
 		url.append(encoding);
 		
-		Class.forName("com.mysql.jdbc.Driver");
-		con = DriverManager.getConnection(url.toString(), user, pwd);
+		this.connect(user, pwd);
 		System.out.println("Connecting Database Succeed!");
+		System.out.println("-------------------------------------------");
+	}
+	
+	public void connect(String user, String pwd) throws SQLException, ClassNotFoundException {
+		
+		Class.forName("com.mysql.jdbc.Driver");
+		System.out.println("MySQL JDBC Driver Registered!");
+		this.con = DriverManager.getConnection(this.url.toString(), user, pwd);
+		System.out.println("SQL Connection to Database Established!");
 	}
 	
 	public ResultSet execute(String sql) throws SQLException {
