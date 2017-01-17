@@ -112,8 +112,6 @@ public class DBAdmin {
 			stat.setString(index, columns.get(index).toString());
 		
 		stat.executeUpdate();
-		
-		this.close();
 	}
 
 	public void insert(String table, ArrayList<String> values) throws SQLException {
@@ -132,16 +130,12 @@ public class DBAdmin {
 			stat.setString(index, values.get(index));
 		
 		stat.executeUpdate();
-		
-		this.close();
 	}
 
 	public void drop(String table) throws SQLException { 
 		
 		stat = con.prepareStatement("DROP TABLE " + table);
 		stat.executeUpdate();
-		
-		this.close();
 	}
 	
 	public ResultSet selectAll(String table) throws SQLException {
