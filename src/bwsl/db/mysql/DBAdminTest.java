@@ -12,6 +12,8 @@ public class DBAdminTest {
 		ResultSet rs = dba.selectAll("test");
 		while(rs.next()) System.out.println(rs.getString("P") + " " + rs.getString("A") + " " + rs.getString("B"));
 		
+		dba.drop("todrop");
+		
 		dba.close();
 	}
 }
