@@ -109,7 +109,7 @@ public class DBAdmin {
 		stat = con.prepareStatement(sql.toString());
 		
 		for(int index = 0; index < columns.size(); ++index)
-			stat.setString(index, columns.get(index).toString());
+			stat.setString(index + 1, columns.get(index).toString());
 		
 		stat.executeUpdate();
 	}
@@ -127,7 +127,7 @@ public class DBAdmin {
 		stat = con.prepareStatement(sql.toString());
 		
 		for(int index = 0; index < values.size(); ++index)
-			stat.setString(index, values.get(index));
+			stat.setString(index + 1, values.get(index));
 		
 		stat.executeUpdate();
 	}
