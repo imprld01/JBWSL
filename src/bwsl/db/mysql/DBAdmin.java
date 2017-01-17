@@ -2,15 +2,15 @@ package bwsl.db.mysql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 public class DBAdmin {
 	
 	private Connection con;
-	private Statement stat;
+	private PreparedStatement stat;
 	private StringBuilder url;
 	
 	public static final String _ENCODING_UTF_8 = "UTF-8";
@@ -88,64 +88,68 @@ public class DBAdmin {
 	
 	public ResultSet execute(String sql) throws SQLException {
 		
-		stat = con.createStatement();
-		ResultSet rs = stat.executeQuery(sql);
+		stat = con.prepareStatement(sql);
+		ResultSet rs = stat.executeQuery();
 		
-		this.close();
 		return rs;
 	}
 	
 	public void create(String table, ArrayList<String> columns) throws SQLException {
 		
 		StringBuilder sql = new StringBuilder();
-		sql.append("CREATE TABLE ");
-		sql.append(table);
-		sql.append("(");
+		sql.append("CREATE TABLE ? (");
 		for(int index = 0; index < columns.size(); ++index) {
 			if(index > 0) sql.append(", ");
-			sql.append(columns.get(index));
+			sql.append("?");
 		}
 		sql.append(");");
 		
-		stat = con.createStatement();
-		stat.executeUpdate(sql.toString());
+		stat = con.prepareStatement(sql.toString());
+		
+		stat.setString(1, table);
+		for(int index = 0; index < columns.size(); ++index)
+			stat.setString(index + 2, columns.get(index));
+		
+		stat.executeUpdate();
 		
 		this.close();
 	}
 
-	public void insert(String table, String parameters, ArrayList<String> values) throws SQLException {
+	public void insert(String table, ArrayList<String> values) throws SQLException {
 		
 		StringBuilder sql = new StringBuilder();
-		sql.append("INSERT INTO ");
-		sql.append(table);
-		sql.append("(");
-		sql.append(parameters);
-		sql.append(")");
-		sql.append("VALUES (");
+		sql.append("INSERT INTO ? VALUES (");
 		for(int index = 0; index < values.size(); ++index) {
 			if(index > 0) sql.append(", ");
-			sql.append(values.get(index));
+			sql.append("?");
 		}
 		sql.append(");");
 		
-		stat = con.createStatement();
-		stat.executeUpdate(sql.toString());
+		stat = con.prepareStatement(sql.toString());
+		
+		stat.setString(1, table);
+		for(int index = 0; index < values.size(); ++index)
+			stat.setString(index + 2, values.get(index));
+		
+		stat.executeUpdate();
 		
 		this.close();
 	}
 
 	public void drop(String table) throws SQLException { 
 		
-		stat = con.createStatement(); 
-		stat.executeUpdate("DROP TABLE " + table + ";"); 
+		stat = con.prepareStatement("DROP TABLE ?;");
+		stat.setString(1, table);
+		stat.executeUpdate();
 		
 		this.close();
 	}
 	
 	public ResultSet selectAll(String table) throws SQLException {
 		
-		stat = con.createStatement();
-		ResultSet rs = stat.executeQuery("SELECT * FROM " + table + ";");
+		stat = con.prepareStatement("SELECT * FROM ?;");
+		stat.setString(1, table);
+		ResultSet rs = stat.executeQuery();
 		
 		return rs;
 	}
