@@ -1,0 +1,5 @@
+bwsl.db.mongodb
+bwsl.db.mysql
+bwsl.fileio.stream
+bwsl.json.gson
+bwsl.mail.javax
