@@ -128,9 +128,20 @@ public class DBAdmin {
 	
 	public void close() throws SQLException {
 		
-		if(stat != null) {
-			stat.close();
-			stat = null;
+		System.out.println("---------- MySQL JDBC Connection ----------");
+		System.out.println("Try Closing SQL Connection to Database...");
+		
+		if(this.stat != null) {
+			this.stat.close();
+			this.stat = null;
 		}
+		
+		if (this.con != null){
+			this.con.close();
+			this.con = null;
+		}
+		
+		System.out.println("SQL Connection to Database Closed!");
+		System.out.println("-------------------------------------------");
 	}
 }
