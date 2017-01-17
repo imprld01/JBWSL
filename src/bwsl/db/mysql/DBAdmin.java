@@ -7,6 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author bowns
+ * @email bowns1688@hotmail.com
+ * @date 2017.01.17
+ *
+ */
 public class DBAdmin {
 	
 	private Connection con;
