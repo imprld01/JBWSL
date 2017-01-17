@@ -22,6 +22,10 @@ public class DBAdminTest {
 		values.add("3");
 		values.add("5");
 		dba.insert("todrop", values);
+		values = new ArrayList<String>();
+		values.add("100");
+		values.add("500");
+		dba.insert("todrop", values);
 		
 		rs = dba.selectAll("todrop");
 		while(rs.next()) System.out.println(rs.getString("A") + " " + rs.getString("B"));
