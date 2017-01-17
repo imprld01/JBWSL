@@ -99,7 +99,7 @@ public class DBAdmin {
 	public void create(String table, ArrayList<String> columns) throws SQLException {
 		
 		StringBuilder sql = new StringBuilder();
-		sql.append("CREATE TABLE ? (");
+		sql.append("CREATE TABLE " + table + " (");
 		for(int index = 0; index < columns.size(); ++index) {
 			if(index > 0) sql.append(", ");
 			sql.append("?");
@@ -108,9 +108,8 @@ public class DBAdmin {
 		
 		stat = con.prepareStatement(sql.toString());
 		
-		stat.setString(1, table);
-		for(int index = 0; index < columns.size(); ++index)
-			stat.setString(index + 2, columns.get(index));
+		for(int index = 1; index <= columns.size(); ++index)
+			stat.setString(index, columns.get(index));
 		
 		stat.executeUpdate();
 		
@@ -120,7 +119,7 @@ public class DBAdmin {
 	public void insert(String table, ArrayList<String> values) throws SQLException {
 		
 		StringBuilder sql = new StringBuilder();
-		sql.append("INSERT INTO ? VALUES (");
+		sql.append("INSERT INTO " + table + " VALUES (");
 		for(int index = 0; index < values.size(); ++index) {
 			if(index > 0) sql.append(", ");
 			sql.append("?");
@@ -129,9 +128,8 @@ public class DBAdmin {
 		
 		stat = con.prepareStatement(sql.toString());
 		
-		stat.setString(1, table);
-		for(int index = 0; index < values.size(); ++index)
-			stat.setString(index + 2, values.get(index));
+		for(int index = 1; index <= values.size(); ++index)
+			stat.setString(index, values.get(index));
 		
 		stat.executeUpdate();
 		
@@ -140,8 +138,7 @@ public class DBAdmin {
 
 	public void drop(String table) throws SQLException { 
 		
-		stat = con.prepareStatement("DROP TABLE ?;");
-		stat.setString(1, table);
+		stat = con.prepareStatement("DROP TABLE " + table);
 		stat.executeUpdate();
 		
 		this.close();
@@ -149,8 +146,7 @@ public class DBAdmin {
 	
 	public ResultSet selectAll(String table) throws SQLException {
 		
-		stat = con.prepareStatement("SELECT * FROM ?;");
-		stat.setString(1, table);
+		stat = con.prepareStatement("SELECT * FROM " + table);
 		ResultSet rs = stat.executeQuery();
 		
 		return rs;
