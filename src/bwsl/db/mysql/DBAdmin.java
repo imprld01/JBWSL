@@ -104,7 +104,7 @@ public class DBAdmin {
 			if(index > 0) sql.append(", ");
 			sql.append("?");
 		}
-		sql.append(");");
+		sql.append(")");
 		
 		stat = con.prepareStatement(sql.toString());
 		
@@ -122,7 +122,7 @@ public class DBAdmin {
 			if(index > 0) sql.append(", ");
 			sql.append("?");
 		}
-		sql.append(");");
+		sql.append(")");
 		
 		stat = con.prepareStatement(sql.toString());
 		
