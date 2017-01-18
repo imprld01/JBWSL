@@ -1,5 +1,7 @@
 package bwsl.db.mysql;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,7 +22,7 @@ public class DBAdmin {
 	private StringBuilder url;
 	private PreparedStatement stat;
 	
-	public static final String _ENCODING_UTF_8 = "UTF-8";
+	public static final Charset _ENCODING_UTF_8 = StandardCharsets.UTF_8;
 	
 	public static final String _ADDR_LOCALHOST = "localhost";
 	public static final String _ADDR_LOCALHOST_PORT_3306 = "localhost:3306";
@@ -32,13 +34,13 @@ public class DBAdmin {
 		this.prpareUrl(addr, dbName, true, DBAdmin._ENCODING_UTF_8);
 	}
 	
-	public DBAdmin(String addr, String dbName, String encoding) throws ClassNotFoundException, SQLException {
+	public DBAdmin(String addr, String dbName, Charset encoding) throws ClassNotFoundException, SQLException {
 		
 		this.printFrontConnectMsg();
 		this.prpareUrl(addr, dbName, true, encoding);
 	}
 	
-	public DBAdmin(String addr, String dbName, String encoding, String user, String pwd) throws ClassNotFoundException, SQLException {
+	public DBAdmin(String addr, String dbName, Charset encoding, String user, String pwd) throws ClassNotFoundException, SQLException {
 		
 		this.printFrontConnectMsg();
 		this.prpareUrl(addr, dbName, true, encoding);
@@ -74,7 +76,7 @@ public class DBAdmin {
 		System.out.println("MySQL JDBC Driver Registered!");
 	}
 	
-	private void prpareUrl(String addr, String dbName, boolean unicode, String encoding) {
+	private void prpareUrl(String addr, String dbName, boolean unicode, Charset encoding) {
 		
 		this.url = new StringBuilder();
 		this.url.append("jdbc:mysql://");
