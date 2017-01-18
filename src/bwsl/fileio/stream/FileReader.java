@@ -29,9 +29,9 @@ public class FileReader {
 		this.parse = false;
 		
 		FileInputStream fis = new FileInputStream(targetFile);
-        InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
-        this.br = new BufferedReader(isr);
-        this.sc = null;
+		InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
+		this.br = new BufferedReader(isr);
+		this.sc = null;
 	}
 	
 	public FileReader(String filePath, Charset cs) throws IOException {
@@ -40,9 +40,9 @@ public class FileReader {
 		this.parse = false;
 		
 		FileInputStream fis = new FileInputStream(targetFile);
-        InputStreamReader isr = new InputStreamReader(fis, cs);
-        this.br = new BufferedReader(isr);
-        this.sc = null;
+		InputStreamReader isr = new InputStreamReader(fis, cs);
+		this.br = new BufferedReader(isr);
+		this.sc = null;
 	}
 	
 	public FileReader(File targetFile) throws IOException {
@@ -51,9 +51,9 @@ public class FileReader {
 		this.parse = false;
 		
 		FileInputStream fis = new FileInputStream(targetFile);
-        InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
-        this.br = new BufferedReader(isr);
-        this.sc = null;
+		InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
+		this.br = new BufferedReader(isr);
+		this.sc = null;
 	}
 	
 	public FileReader(File targetFile, Charset cs) throws IOException {
@@ -62,9 +62,9 @@ public class FileReader {
 		this.parse = false;
 		
 		FileInputStream fis = new FileInputStream(targetFile);
-        InputStreamReader isr = new InputStreamReader(fis, cs);
-        this.br = new BufferedReader(isr);
-        this.sc = null;
+		InputStreamReader isr = new InputStreamReader(fis, cs);
+		this.br = new BufferedReader(isr);
+		this.sc = null;
 	}
 	
 	public FileReader(String filePath, boolean parse) throws IOException {
@@ -72,13 +72,13 @@ public class FileReader {
 		this.targetFile = new File(filePath);
 		this.parse = parse;
 		
-		if(this.parse){
+		if(this.parse) {
 			this.br = null;
 			this.sc = new Scanner(this.targetFile, "UTF-8");
 		}
-		else{
+		else {
 			FileInputStream fis = new FileInputStream(targetFile);
-	        InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
+			InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
 	        this.br = new BufferedReader(isr);
 	        this.sc = null;
 		}
@@ -89,15 +89,15 @@ public class FileReader {
 		this.targetFile = new File(filePath);
 		this.parse = parse;
 		
-		if(this.parse){
+		if(this.parse) {
 			this.br = null;
 			this.sc = new Scanner(this.targetFile, cs.name());
 		}
-		else{
+		else {
 			FileInputStream fis = new FileInputStream(targetFile);
-	        InputStreamReader isr = new InputStreamReader(fis, cs);
-	        this.br = new BufferedReader(isr);
-	        this.sc = null;
+			InputStreamReader isr = new InputStreamReader(fis, cs);
+			this.br = new BufferedReader(isr);
+			this.sc = null;
 		}
 	}
 	
@@ -112,7 +112,7 @@ public class FileReader {
 		}
 		else{
 			FileInputStream fis = new FileInputStream(targetFile);
-	        InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
+			InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
 	        this.br = new BufferedReader(isr);
 	        this.sc = null;
 		}
@@ -129,9 +129,9 @@ public class FileReader {
 		}
 		else{
 			FileInputStream fis = new FileInputStream(targetFile);
-	        InputStreamReader isr = new InputStreamReader(fis, cs);
-	        this.br = new BufferedReader(isr);
-	        this.sc = null;
+			InputStreamReader isr = new InputStreamReader(fis, cs);
+			this.br = new BufferedReader(isr);
+			this.sc = null;
 		}
 	}
 	
