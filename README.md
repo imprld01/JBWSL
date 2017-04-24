@@ -1,6 +1,6 @@
 # JBWSL
-<p>An own library in Java.</p>
-<p>This Repository is created for developing useful modules for reuse.</p>
+An own library in Java.  
+This Repository is created for developing useful modules for reuse.
 
 # License
 [![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)  
